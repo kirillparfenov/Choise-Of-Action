@@ -8,14 +8,16 @@ import com.game.choice_of_action.example.factory.OrcHeroFactory;
 import com.game.choice_of_action.example.factory.product.Archer;
 import com.game.choice_of_action.example.factory.product.Mage;
 import com.game.choice_of_action.example.factory.product.Warrior;
+import com.game.choice_of_action.service.abstr.human.HumanWarriorService;
 import java.util.Scanner;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Slf4j
 public class CreateHero {
   private final Scanner scanner = new Scanner(System.in);
 
-  public void raceChoice(int race) {
+  public void raceChoice(int race, String nameHero) {
     String trigger = "\nВведи одно из предложенных чисел";
     int check;
 
@@ -28,7 +30,7 @@ public class CreateHero {
             while (true) {
               if (check >= 1 && check <= 3) {
                 AbstractHeroFactory factory = new HumanHeroFactory();
-                choiceOfSpecialization(factory, check);
+                choiceOfSpecialization(factory, check, nameHero);
                 break;
               } else {
                 log.info(trigger);
@@ -42,7 +44,7 @@ public class CreateHero {
             while (true) {
               if (check >= 1 && check <= 3) {
                 AbstractHeroFactory factory = new ElfHeroFactory();
-                choiceOfSpecialization(factory, check);
+                choiceOfSpecialization(factory, check, nameHero);
                 break;
               } else {
                 log.info(trigger);
@@ -56,7 +58,7 @@ public class CreateHero {
             while (true) {
               if (check >= 1 && check <= 3) {
                 AbstractHeroFactory factory = new OrcHeroFactory();
-                choiceOfSpecialization(factory, check);
+                choiceOfSpecialization(factory, check, nameHero);
                 break;
               } else {
                 log.info(trigger);
@@ -70,7 +72,7 @@ public class CreateHero {
             while (true) {
               if (check >= 1 && check <= 3) {
                 AbstractHeroFactory factory = new DwarfHeroFactory();
-                choiceOfSpecialization(factory, check);
+                choiceOfSpecialization(factory, check, nameHero);
                 break;
               } else {
                 log.info(trigger);
@@ -87,15 +89,16 @@ public class CreateHero {
     }
   }
 
-  public void choiceOfSpecialization(AbstractHeroFactory factory, int check) {
+  public void choiceOfSpecialization(AbstractHeroFactory factory, int check, String nameHero) {
     if (check == 1) {
-      Warrior warrior = factory.createWarrior();
+      Warrior warrior = factory.createWarrior(nameHero);
+      System.err.println(warrior);
       warrior.attack();
     } else if (check == 2) {
-      Archer archer = factory.createArcher();
+      Archer archer = factory.createArcher(nameHero);
       archer.shoot();
     } else {
-      Mage mage = factory.createMage();
+      Mage mage = factory.createMage(nameHero);
       mage.cast();
     }
   }

@@ -6,7 +6,7 @@ import com.game.choice_of_action.example.factory.product.Warrior;
 
 public interface AbstractHeroFactory {
 
-  Warrior createWarrior();
-  Archer createArcher();
-  Mage createMage();
+  Warrior createWarrior(String nameHero);
+  Archer createArcher(String nameHero);
+  Mage createMage(String nameHero);
 }

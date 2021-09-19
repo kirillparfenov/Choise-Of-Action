@@ -10,17 +10,24 @@ import com.game.choice_of_action.example.human.HumanWarrior;
 public class HumanHeroFactory implements AbstractHeroFactory {
 
   @Override
-  public Warrior createWarrior() {
-    return new HumanWarrior();
+  public Warrior createWarrior(String nameHero) {
+    HumanWarrior humanWarrior = new HumanWarrior();
+    humanWarrior.setNameHero(nameHero);
+    return humanWarrior;
   }
 
   @Override
-  public Archer createArcher() {
-    return new HumanArcher();
+  public Archer createArcher(String nameHero) {
+    HumanArcher humanArcher = new HumanArcher();
+    humanArcher.setNameHero(nameHero);
+    //humanArcherService.persist(humanArcher);
+    return humanArcher;
   }
 
   @Override
-  public Mage createMage() {
-    return new HumanMage();
+  public Mage createMage(String nameHero) {
+    HumanMage humanMage = new HumanMage();
+    humanMage.setNameHero(nameHero);
+    return humanMage;
   }
 }
