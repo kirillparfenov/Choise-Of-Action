@@ -4,13 +4,11 @@ import com.game.choice_of_action.example.factory.product.AbstractArcher;
 import com.game.choice_of_action.example.factory.product.Archer;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
+@Data
 @Entity
-@Getter
-@Setter
 @DiscriminatorValue("HUMAN_ARCHER")
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 public class HumanArcher extends AbstractArcher implements Archer {

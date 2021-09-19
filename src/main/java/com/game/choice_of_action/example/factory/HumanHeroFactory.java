@@ -6,8 +6,15 @@ import com.game.choice_of_action.example.factory.product.Warrior;
 import com.game.choice_of_action.example.human.HumanArcher;
 import com.game.choice_of_action.example.human.HumanMage;
 import com.game.choice_of_action.example.human.HumanWarrior;
+import com.game.choice_of_action.service.abstr.human.HumanArcherService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HumanHeroFactory implements AbstractHeroFactory {
+
+  @Autowired
+  private HumanArcherService humanArcherService;
 
   @Override
   public Warrior createWarrior(String nameHero) {
@@ -20,7 +27,7 @@ public class HumanHeroFactory implements AbstractHeroFactory {
   public Archer createArcher(String nameHero) {
     HumanArcher humanArcher = new HumanArcher();
     humanArcher.setNameHero(nameHero);
-    //humanArcherService.persist(humanArcher);
+    humanArcherService.persist(humanArcher);
     return humanArcher;
   }
 

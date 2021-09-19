@@ -4,13 +4,11 @@ import com.game.choice_of_action.example.factory.product.AbstractWarrior;
 import com.game.choice_of_action.example.factory.product.Warrior;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
+@Data
 @Entity
-@Getter
-@Setter
 @DiscriminatorValue("ORC_WARRIOR")
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 public class OrcWarrior extends AbstractWarrior implements Warrior {
